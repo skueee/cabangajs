@@ -12,7 +12,7 @@ export class RestManager {
     const url = `${this.baseURL}/${path}`;
 
     let requestHeaders: Record<string, string> = {
-      "User-Agent": "skueee/cabangajs"
+      "User-Agent": "skueee/cabangajs",
       ...headers
     }
 
