@@ -1,3 +1,5 @@
+import { SetAssignmentStates } from "../routes/Diary"
+
 /**
  * Represents a diary entry. It can include an homework and a lesson subject if the teacher added them.
  */
@@ -15,7 +17,6 @@ export class Attribution {
    * @param remark - Optional; a remark added by the user
    * @param studentId - Student identifier
    * @param schoolId - School identifier
-   * @param accessToken - Token to access content
    */
 
   constructor(
@@ -40,6 +41,7 @@ export class Attribution {
   async setData(completed?: boolean, remark?: string, accessToken: string) {
     const completedState = completed ?? this.done
     const remarkState = remark ?? this.remark ?? ""
-    const body = {"homeworkDone":completedState,"remark":remarkState}
+    const body = { "homeworkDone": completedState, "remark": remarkState }
+    await SetAssignmentStates(this.id, this.studentId, this.schoolId, completedState, remarkState, accessToken)
   }
 }

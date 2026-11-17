@@ -31,12 +31,13 @@ export class RestManager {
       headers: requestHeaders
     })
 
+    const text = await response.text();
+    const responseData = text ? JSON.parse(text) : null;
+
     if (!response.ok) {
-      const responseData = await response.json();
-      throw new Error(`${response.status}: ${JSON.stringify(responseData)}`);
+      throw new Error(`${response.status}: ${text || response.statusText}`);
     }
 
-    const responseData = await response.json();
     return responseData as T;
   }
 
