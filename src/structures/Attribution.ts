@@ -29,8 +29,7 @@ export class Attribution {
     public homework: string | null = null,
     public remark: string | null = null,
     public studentId: string,
-    public schoolId: string,
-    public accessToken: string
+    public schoolId: string
   ) { }
 
   /**

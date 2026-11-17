@@ -1,4 +1,6 @@
 import { AuthRefresh } from "../routes/Auth"
+import { GetAssignmentsList } from "../routes/Diary"
+import { Attribution } from "./Attribution"
 
 export class Cabanga {
   constructor(
@@ -22,5 +24,16 @@ export class Cabanga {
       return true
     }
     return false
+  }
+
+  // Diary related
+  async getAssignments(from: string, to: string) {
+    await this.refreshAccessToken()
+    return await GetAssignmentsList(this.schoolId, this.userId, this.accessToken, from, to)
+  }
+
+  async setAssignmentData(attribution: Attribution, completed: boolean = undefined, remark: string = undefined) {
+    await this.refreshAccessToken()
+    attribution.setData(completed, remark, this.accessToken)
   }
 }
