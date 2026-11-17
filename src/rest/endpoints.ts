@@ -10,6 +10,7 @@ export const USER_LEGAL_ABSENCES = (schoolId: string, userId: string) => SCHOOL(
 
 // Diary related
 export const USER_DIARY = (schoolId: string, userId: string) => SCHOOL(schoolId) + USER(userId) + "diary"
+export const USER_DIARY_ASSIGNMENT = (schoolId: string, userId: string, assignementId: string) => SCHOOL(schoolId) + USER(userId) + "diary/" + assignementId
 
 // School infos related
 export const SCHOOL_SCHEDULES = (schoolId: string, year: string) => SCHOOL(schoolId) + "schedules/" + year
