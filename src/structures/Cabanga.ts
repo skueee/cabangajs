@@ -18,7 +18,7 @@ export class Cabanga {
       const response = await AuthRefresh(this.refreshURL, this.refreshToken)
       this.accessToken = response.access_token
       this.refreshToken = response.refresh_token
-      this.accessTokenExpiration = Date.now() + response.expires_in
+      this.accessTokenExpiration = Date.now() + response.expires_in * 1000
       return true
     }
     return false
